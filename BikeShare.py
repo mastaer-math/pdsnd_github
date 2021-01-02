@@ -260,7 +260,7 @@ def show_raw_data(df):
             print(tabulate(df_default.iloc[np.arange(0+i,5+i)], headers = "keys"))
             i += 5
             
-        print('-'*80) 
+        print('-'*60) 
 
 def main():
     while True:

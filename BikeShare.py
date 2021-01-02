@@ -250,7 +250,7 @@ def user_stats(df):
     print('-'*40)
 
 
-
+#This function display the selected data frame 5 at a times with all the columns
 def show_raw_data(df):
     """method to print the selected data frame, 5 at a time"""
     while True:

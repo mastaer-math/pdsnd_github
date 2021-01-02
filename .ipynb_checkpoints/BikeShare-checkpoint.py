@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
-from tabulate import tabulate
+#from tabulate import tabulate
 
 CITY_DATA = { 'chicago': 'chicago.csv', 'new york city': 'new_york_city.csv', 'washington': 'washington.csv' }
 
@@ -253,12 +253,29 @@ def user_stats(df):
 
 def show_raw_data(df):
     """method to print the selected data frame, 5 at a time"""
-    while True:
-        display_data = input('\nWould you like to see 5 lines of the raw data? Enter yes or no.\n')
-        if display_data.lower() != 'yes':
+
+    BIN_RESPONSE_LIST = ['yes', 'no']
+    rdata = ''
+    counter = 0
+    while rdata not in BIN_RESPONSE_LIST:
+        print("\nDo you wish to view the raw data? Enter yes or no")
+        rdata = input().lower()
+        if rdata == "yes":
+            print(df.head())
+        elif rdata not in BIN_RESPONSE_LIST:
+            print("\nPlease check your input.")
+            print("Input does not match any of accepted responses.")
+            print("\nRestarting...\n")
+            
+    while rdata == "yes":
+        print("Do you wish to view more raw data?")
+        counter += 5
+        rdata = input().lower()
+        
+        if rdata == "yes":
+            print(df[counter: counter + 5])
+        elif rdata != "yes":
             break
-            print(tabulate(df_default.iloc[np.arange(0+i,5+i)], headers = "keys"))
-            i += 5
             
         print('-'*80) 
 
